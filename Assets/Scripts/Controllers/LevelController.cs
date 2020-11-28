@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static GameManager Singleton { get; private set; }
+
     void Start()
     {
         

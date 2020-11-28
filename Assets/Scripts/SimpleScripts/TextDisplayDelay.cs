@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// THIS CLASS IS RESPONSIBLE TO DELAY THE ACTIVATION OF A SPRITE RENDERER IN "setTime" AMOUNT OF SECONDS.
+/// </summary>
 public class TextDisplayDelay : MonoBehaviour
 {
     private SpriteRenderer rend;
 
     private float curTime;
     private float setTime;
-
-    // Start is called before the first frame update
+        
     void Awake()
     {
         curTime = 0f;
@@ -21,7 +23,6 @@ public class TextDisplayDelay : MonoBehaviour
             rend.enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (curTime < setTime)

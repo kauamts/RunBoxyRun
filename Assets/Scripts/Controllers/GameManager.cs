@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+/// <summary>
+/// THIS IS THE SINGLETON CLASS THAT RUNS THE SHOW, IT CALLS GAME STATES AND CHANGES SCENES.
+/// EVERYONE ONE REFERENCES FROM IT AND BY BEING STATIC IT MAKES SURE THE DATA IS CONSISTENT
+/// ACROSS THE ENTIRE PROJECT.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static GameManager Singleton { get; private set; }
 
     private AudioSource myAudio;
     private string curScene;
@@ -13,12 +19,11 @@ public class GameManager : MonoBehaviour
 
     public static bool pleaseDontStopTheMusic = true;
 
-    // Start is called before the first frame update
     void Awake()
     {
-        if (Instance == null)
+        if (Singleton == null)
         {
-            Instance = this;
+            Singleton = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -40,7 +45,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         curScene = SceneManager.GetActiveScene().name;
