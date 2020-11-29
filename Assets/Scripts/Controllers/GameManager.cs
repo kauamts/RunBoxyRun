@@ -30,7 +30,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
+    void Start()
+    {
         myAudio = this.GetComponent<AudioSource>();
 
         pleaseDontStopTheMusic = true;

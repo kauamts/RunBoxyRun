@@ -9,7 +9,7 @@ public class AnyKeyToStart : MonoBehaviour
 {
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (Time.realtimeSinceStartup > 3f && (Input.anyKeyDown || Input.touchCount > 0))
             GameManager.Singleton.ChangeScene("Level_01");
     }
 }
