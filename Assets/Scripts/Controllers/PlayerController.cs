@@ -6,10 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Singleton { get; private set; }
 
+    [SerializeField]
     private enum Direction {Left, Right};
+    [SerializeField]
     private Direction moving;
+    [SerializeField]
     private bool playerMoving;
+    [SerializeField]
     private float curPosition;
+    [SerializeField]
     public float sideMoveSpeed;
 
     void Awake()
@@ -37,20 +42,21 @@ public class PlayerController : MonoBehaviour
         if(!playerMoving)
         {
             if ((Input.GetKeyDown(KeyCode.D) ||
-                Input.GetKeyDown(KeyCode.RightArrow) ||
-                Input.GetKeyDown(KeyCode.Keypad6))
-                &&
-                curPosition <= 2.5f)
+                 Input.GetKeyDown(KeyCode.RightArrow) ||
+                 Input.GetKeyDown(KeyCode.Keypad6))
+                 &&
+                 curPosition < 2.5f && !playerMoving)
             {
                 playerMoving = true;
                 moving = Direction.Right;
                 curPosition = this.transform.position.x;
             }
-            else if (Input.GetKeyDown(KeyCode.A) ||
-                     Input.GetKeyDown(KeyCode.LeftArrow) ||
-                     Input.GetKeyDown(KeyCode.Keypad4)
-                     &&
-                     curPosition >= -2.5f)
+            
+            if ((Input.GetKeyDown(KeyCode.A) ||
+                 Input.GetKeyDown(KeyCode.LeftArrow) ||
+                 Input.GetKeyDown(KeyCode.Keypad4))
+                 &&
+                 curPosition > -2.5f && !playerMoving)
             {
                 playerMoving = true;
                 moving = Direction.Left;

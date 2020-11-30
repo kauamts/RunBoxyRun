@@ -1244,6 +1244,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105c1f31e609fbd4b82c6d3462ffd16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moving: 1
+  playerMoving: 0
+  curPosition: 0
   sideMoveSpeed: 50
 --- !u!1001 &1975334439
 PrefabInstance:
