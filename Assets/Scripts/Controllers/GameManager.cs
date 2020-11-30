@@ -13,12 +13,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Singleton { get; private set; }
 
-    private AudioSource myAudio;
-    private string curScene;
-    private string lastScene;
-
-    public static bool pleaseDontStopTheMusic = true;
-
     void Awake()
     {
         if (Singleton == null)
@@ -34,46 +28,12 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        myAudio = this.GetComponent<AudioSource>();
-
-        pleaseDontStopTheMusic = true;
-
-        if (!pleaseDontStopTheMusic)
-        {
-            myAudio.Stop();
-        }
-        else
-        {
-            myAudio.Play();
-        }
+        
     }
 
     void Update()
     {
-        curScene = SceneManager.GetActiveScene().name;
-
-        if (lastScene != curScene && curScene == "05_Parabens")
-        {
-            myAudio.Stop();
-        }
-
-        if (lastScene != curScene && curScene == "01_MainMenu")
-        {
-            AudioListener.volume = 1.0f;
-            AudioListener.pause = false;
-            myAudio.Play();
-        }
-
-        if (!pleaseDontStopTheMusic && myAudio.isPlaying == true)
-        {
-            myAudio.Pause();
-        }
-        else if (pleaseDontStopTheMusic && myAudio.isPlaying == false)
-        {
-            myAudio.UnPause();
-        }
-
-        lastScene = curScene;
+        
     }
 
     public void ChangeScene(string sceneName)

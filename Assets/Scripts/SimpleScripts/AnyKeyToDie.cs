@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// THIS CLASS DETECTS ANY INPUT TO CHANGE SCENES AND START THE GAME.
 /// </summary>
-public class AnyKeyToStart : MonoBehaviour
+public class AnyKeyToDie : MonoBehaviour
 {
     [SerializeField]
     private float curTime;
@@ -20,9 +20,12 @@ public class AnyKeyToStart : MonoBehaviour
 
     void Update()
     {
-        if ((curTime > setTime) && (Input.anyKeyDown || Input.touchCount > 0))
-            GameManager.Singleton.ChangeScene("Level_01");
+        if (((curTime > setTime)) && (Input.anyKeyDown || Input.touchCount > 0))
+        {
+            StartButton.startUp = true;
+            Destroy(this.gameObject);
+        }            
         else
-            curTime += Time.deltaTime;
+            curTime += Time.fixedDeltaTime;
     }
 }

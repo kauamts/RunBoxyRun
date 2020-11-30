@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float curPosition;
     [SerializeField]
-    public float sideMoveSpeed;
+    private float sideMoveSpeed;
+
+    private bool setDelay;
 
     void Awake()
     {
@@ -32,6 +34,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        setDelay = false;
+        sideMoveSpeed = 50f;
         playerMoving = false;
         moving = Direction.Right;
         curPosition = this.transform.position.x;
@@ -39,6 +43,17 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(!setDelay)
+        {
+            if (Time.timeSinceLevelLoad > 1f)
+            {
+                setDelay = true;
+            }                
+            else
+                playerMoving = false;
+        }
+        
+
         if(!playerMoving)
         {
             if ((Input.GetKeyDown(KeyCode.D) ||
@@ -97,5 +112,29 @@ public class PlayerController : MonoBehaviour
             }
         }
         
+    }
+
+    internal void MoveChar(TouchCollider.Side side)
+    {
+        if (!playerMoving)
+        {
+            //RIGHT
+            if (side == TouchCollider.Side.Right &&
+                 curPosition < 2.5f && !playerMoving)
+            {
+                playerMoving = true;
+                moving = Direction.Right;
+                curPosition = this.transform.position.x;
+            }
+
+            //LEFT
+            if (side == TouchCollider.Side.Left &&
+                 curPosition > -2.5f && !playerMoving)
+            {
+                playerMoving = true;
+                moving = Direction.Left;
+                curPosition = this.transform.position.x;
+            }
+        }
     }
 }
