@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3695143782528316783}
   - component: {fileID: -5776964673587465127}
+  - component: {fileID: 70230891583261173}
   m_Layer: 0
   m_Name: RoadTile_01
   m_TagString: Untagged
@@ -47,7 +48,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile01: {fileID: 3695143782528316782}
-  runningSpeed: -10
+--- !u!114 &70230891583261173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3695143782528316782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade8044725868b443b14316b5e2ad54d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceInvader: {fileID: 7835778001180288635, guid: 24bb20fb89fbca442bb7d00fe84b8192, type: 3}
+  xFinal: 0
+  yFinal: 0
+  zFinal: 0
+  xDrawn: 0
+  zDrawn: 0
+  spawnCount: 0
+  lvlDifficulty: 0
 --- !u!1001 &6711769431472312278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99,6 +119,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8145160063816951674, guid: f1f83f3b2acd529489034f7bbdbce396, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 643c43f8895fa574c900d57c1db0da7d, type: 2}
     - target: {fileID: 9164987279323461339, guid: f1f83f3b2acd529489034f7bbdbce396, type: 3}
       propertyPath: m_Name
       value: GuardRail
@@ -117,6 +141,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3695143782528316783}
     m_Modifications:
+    - target: {fileID: 3735432610778783031, guid: fcc0811baa3e56549a107a55789a3943, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816645924059974420, guid: fcc0811baa3e56549a107a55789a3943, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022077810134616619, guid: fcc0811baa3e56549a107a55789a3943, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6316933507529611841, guid: fcc0811baa3e56549a107a55789a3943, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -165,6 +201,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 6316933507529611847, guid: fcc0811baa3e56549a107a55789a3943, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 643c43f8895fa574c900d57c1db0da7d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcc0811baa3e56549a107a55789a3943, type: 3}
 --- !u!4 &3695143781446648205 stripped
@@ -223,6 +263,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8145160063816951674, guid: f1f83f3b2acd529489034f7bbdbce396, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 643c43f8895fa574c900d57c1db0da7d, type: 2}
     - target: {fileID: 9164987279323461339, guid: f1f83f3b2acd529489034f7bbdbce396, type: 3}
       propertyPath: m_Name
       value: GuardRail
