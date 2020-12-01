@@ -7,6 +7,8 @@ public class LevelController : MonoBehaviour
     public static LevelController Singleton { get; private set; }
 
     public static float runningSpeed;
+    public int difficultyLevel;
+
     private float curTime;
     private float setTime;
     
@@ -25,6 +27,7 @@ public class LevelController : MonoBehaviour
 
     void Start()
     {
+        difficultyLevel = 1;
         runningSpeed = -10f;
         curTime = 0f;
         setTime = 3f;
@@ -38,7 +41,8 @@ public class LevelController : MonoBehaviour
         }
         else
         {
-            runningSpeed *= 1.1f;
+            runningSpeed *= 1.05f;
+            difficultyLevel++;
             curTime = 0f;
         }
     }
