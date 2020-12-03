@@ -6,33 +6,28 @@ public class DeathEvent : MonoBehaviour
 {
     public GameObject explosionParticle;
 
-    void Update()
+    void OnCollisionEnter(Collision col)
     {
-        //if (Time.realtimeSinceStartup > 40f)
-        //{
-        //    Collider[] colliders = Physics.OverlapSphere(transform.position, 1f);
-        //    GameObject explosion = Instantiate(explosionParticle, transform.position, Quaternion.identity);
-        //    explosion.transform.parent = this.transform;
+        PlayerController.isPlayerAlive = false;
+        MusicController.pleaseDontStopTheMusic = false;
 
-        //    foreach (Collider hit in colliders)
-        //    {
-        //        Rigidbody rb = hit.GetComponent<Rigidbody>();
+        //Time.timeScale = 0.3f;
+        
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 30f);
+        GameObject explosion = Instantiate(explosionParticle, transform.position, Quaternion.identity);
+        explosion.transform.parent = this.transform;
 
-        //        if (rb != null)
-        //            rb.AddExplosionForce(1f, transform.position, 3f, 5f);
+        foreach (Collider hit in colliders)
+        {
+            Rigidbody rb = hit.GetComponent<Rigidbody>();
 
-        //    }
-        //}
+            if (rb != null)
+            {
+                rb.constraints = RigidbodyConstraints.None;
+                rb.AddExplosionForce(200f, transform.position, 50f, 50f);
+            }             
+        }
 
-        //if (Time.realtimeSinceStartup > 50f)
-        //{
-        //    GameManager.Singleton.ChangeScene("Level_01");
-        //    Destroy(this.gameObject);
-        //}
-    }
-
-    private void TriggerEnter(Collision collision)
-    {
-        Debug.LogWarning("AAAAAAAAAAAAH");
+        Destroy(this.gameObject, 0.5f);
     }
 }
