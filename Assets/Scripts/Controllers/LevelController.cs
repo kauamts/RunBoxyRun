@@ -17,7 +17,6 @@ public class LevelController : MonoBehaviour
         if (Singleton == null)
         {
             Singleton = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {

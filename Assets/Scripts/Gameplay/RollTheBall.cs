@@ -23,13 +23,16 @@ public class RollTheBall : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        curSpeed = LevelController.runningSpeed;
+        if(PlayerController.isPlayerAlive)
+        {
+            curSpeed = LevelController.runningSpeed;
 
-        this.transform.Rotate(xFloat, yFloat, zFloat);
+            this.transform.Rotate(xFloat, yFloat, zFloat);
 
-        if ((curSpeed != lastSpeed) && xFloat < 25f)
-            xFloat += 0.5f;
+            if ((curSpeed != lastSpeed) && xFloat < 25f)
+                xFloat += 0.5f;
 
-        lastSpeed = curSpeed;
+            lastSpeed = curSpeed;
+        }        
     }
 }

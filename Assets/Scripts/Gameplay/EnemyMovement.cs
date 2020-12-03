@@ -13,15 +13,18 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(this.transform.position.z > -30.00f)
+        if(PlayerController.isPlayerAlive)
         {
-            this.transform.Translate(0f, 0f, runningSpeed*Time.deltaTime);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+            if (this.transform.position.z > -30.00f)
+            {
+                this.transform.Translate(0f, 0f, runningSpeed * Time.deltaTime);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
 
-        runningSpeed = LevelController.runningSpeed;
+            runningSpeed = LevelController.runningSpeed;
+        }
     }
 }

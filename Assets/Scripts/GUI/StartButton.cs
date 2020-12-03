@@ -40,6 +40,7 @@ public class StartButton : MonoBehaviour
     void OnMouseUpAsButton()
     {
         MusicController.Singleton.ChangeTrack();
+        MusicController.pleaseDontStopTheMusic = true;
 
         //activate all GUI
 

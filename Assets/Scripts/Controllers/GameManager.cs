@@ -12,6 +12,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Singleton { get; private set; }
+    
+    public bool prepareToReset;
+    [SerializeField]
+    private float resetCountdown;
 
     void Awake()
     {
@@ -28,11 +32,30 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        resetCountdown = 5f;
     }
 
     void Update()
     {
+        //GAME OVER, MAN!
+        if(prepareToReset)
+        {
+            if (resetCountdown <= 0f)
+            {
+                ChangeScene("Level_01");
+                resetCountdown = 5f;
+                prepareToReset = false;
+            }
+            else if(resetCountdown <= 4f)
+            {
+                Time.timeScale = 1f;
+                resetCountdown -= Time.deltaTime;
+            }
+            else
+            {
+                resetCountdown -= Time.deltaTime;
+            }
+        }
         
     }
 
