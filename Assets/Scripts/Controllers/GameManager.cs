@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float resetCountdown;
 
+    public static int scorePoints;
+    public static int highestScore;
+
+
     void Awake()
     {
         if (Singleton == null)
@@ -43,6 +47,7 @@ public class GameManager : MonoBehaviour
             if (resetCountdown <= 0f)
             {
                 ChangeScene("Level_01");
+                ResetScore();
                 resetCountdown = 5f;
                 prepareToReset = false;
             }
@@ -57,6 +62,13 @@ public class GameManager : MonoBehaviour
             }
         }
         
+    }
+
+    public void ResetScore()
+    {
+        if (scorePoints > highestScore)
+            highestScore = scorePoints;
+        scorePoints = 0;
     }
 
     public void ChangeScene(string sceneName)

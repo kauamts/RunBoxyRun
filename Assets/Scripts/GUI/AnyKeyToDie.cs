@@ -15,7 +15,7 @@ public class AnyKeyToDie : MonoBehaviour
     void Awake()
     {
         curTime = 0f;
-        setTime = 2f;
+        setTime = 1f;
     }
 
     void Update()
