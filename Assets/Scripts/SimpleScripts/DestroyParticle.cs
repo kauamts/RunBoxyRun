@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class DestroyParticle : MonoBehaviour
 {
+    private AudioSource audioS;
+
     //Explode and Destroy itself.
     void Start()
     {
+        audioS = GetComponent<AudioSource>();
         GameManager.Singleton.prepareToReset = true;
-        Destroy(this.gameObject, 3f);
+    }
+
+    void Update()
+    {
+        if (!audioS.isPlaying)
+            Destroy(this.gameObject);
     }
 }
