@@ -9,5 +9,4 @@ The game repo will be provided with both a Technical and a Design Document to un
 
 > GAME CREATED BY:
 - KAUAM TRIPOLONE SILVA
-- ALEXANDER CARDOSO HABITH
 
