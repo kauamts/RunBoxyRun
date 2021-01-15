@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour
 {
-    public GameObject spaceInvader;
-
     private float x1 = -1.5f;
     private float x2 = 1f;
     private float x3 = 3.5f;
@@ -29,10 +27,17 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField] private float lvlDifficulty;
     [SerializeField] private float zAdjustment;
 
+    /*
+    void Awake()
+    {
+        spaceInvader = Resources.Load<GameObject>("Prefabs/SpaceInvander");
+    }
+    */
+
     void Start()
     {
         yFinal = 0f;
-
+        
         zAdjustment = this.transform.position.z;
 
         if (zAdjustment == 0)
@@ -134,7 +139,7 @@ public class EnemyGenerator : MonoBehaviour
                     break;
             }
 
-            Instantiate<GameObject>(spaceInvader,
+            Instantiate<GameObject>(Resources.Load("Prefabs/SpaceInvader") as GameObject,
                 new Vector3(xFinal, yFinal, zFinal + zAdjustment),
                 new Quaternion(0f, 0f, 0f, 0f));
         }
