@@ -27,6 +27,11 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField] private float lvlDifficulty;
     [SerializeField] private float zAdjustment;
 
+    [SerializeField] private bool enemyCanSpawn;
+    [SerializeField] private int[] enemySpawnRuleX;
+    [SerializeField] private int[] enemySpawnRuleZ;
+    private int enemyLineCounter;
+
     /*
     void Awake()
     {
@@ -93,12 +98,130 @@ public class EnemyGenerator : MonoBehaviour
 
     private void SpawnInvaders(int vaders)
     {
-        for (int i = 0; vaders > i; i++)
-        {
-            xDrawn = Random.Range(1,4);
-            zDrawn = Random.Range(1,9);
+        enemySpawnRuleX = new int[vaders] ;
+        enemySpawnRuleZ = new int[vaders];
 
-            switch(xDrawn)
+        for (int i = 0; vaders > i; i++) //Possible can be made with foreach, but IDKH *El
+        {
+            xDrawn = Random.Range(1, 4);
+            zDrawn = Random.Range(1, 9);
+
+            for (int valueZ = 0; vaders > valueZ; valueZ++)
+            {
+                if (enemySpawnRuleZ[valueZ] == zDrawn)
+                {
+                    Debug.Log(valueZ); // TEST
+                    enemyLineCounter = 0; //Resets counter.
+                    for (int valueX = 0; vaders > valueX; valueX++)
+                    {
+                        // if there is a obj in the same location. Do not Spawn
+                        if (enemySpawnRuleX[valueX] == xDrawn)
+                        {
+                            Debug.Log("Same Location");
+                            enemyCanSpawn = false;
+                            break;
+                        }
+                        else
+                        {
+                            // If there is less than 2 enemys in the same line. add 1 to counter and spawn. If there is 2 or more, do not spawn.
+                            if (enemyLineCounter <= 1)
+                            {
+                                Debug.Log(enemySpawnRuleZ[i] + ", " + enemySpawnRuleX[i]);
+                                enemyLineCounter++;
+                                enemyCanSpawn = true;
+                                break;
+                            }
+                            else
+                            {
+                                Debug.Log("2 Objs in the same line! Do Not Spawn");
+                                enemyCanSpawn = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    enemyCanSpawn = true;
+                    continue;
+                }
+            }
+            enemySpawnRuleX[i] = xDrawn;
+            enemySpawnRuleZ[i] = zDrawn;
+
+            #region Old Enemy Spawn ver2
+            /*
+            for (int i = 0; vaders > i; i++) //Possible can be made with foreach, but IDKH *El
+            {
+                xDrawn = Random.Range(1, 4);
+                zDrawn = Random.Range(1, 9);
+
+                enemySpawnRuleX[i] = xDrawn;
+                enemySpawnRuleZ[i] = zDrawn;
+
+                for (int valueZ = 0; vaders > valueZ; valueZ++)
+                {
+                    if (enemySpawnRuleZ[i] == 0 || enemySpawnRuleX[i] == 0)
+                    {
+                        Debug.Log(0 + ", " + 0);
+                        enemyCanSpawn = true; // See if is working as intented
+                        continue;
+                    } 
+
+                    if (enemySpawnRuleZ[valueZ] == enemySpawnRuleZ[i] && enemySpawnRuleZ[i] != 0)
+                    {
+                        Debug.Log(valueZ); // TEST
+                        enemyLineCounter = 0; //Resets counter.
+                        for(int valueX = 0; vaders > valueX; valueX++)
+                        {
+                            // if there is a obj in the same location. Do not Spawn
+                            if (enemySpawnRuleX[valueX] == enemySpawnRuleX[i] && enemySpawnRuleX[i] != 0)
+                            {
+                                Debug.Log("Same Location");
+                                enemyCanSpawn = false;
+                                break;
+                            }
+                            else
+                            {
+                                // If there is less than 2 enemys in the same line. add 1 to counter and spawn. If there is 2 or more, do not spawn.
+                                if (enemyLineCounter <= 1)
+                                {
+                                    Debug.Log(enemySpawnRuleZ[i] + ", " + enemySpawnRuleX[i]);
+                                    enemyLineCounter++;
+                                    enemyCanSpawn = true;
+                                    break;
+                                }
+                                else
+                                {
+                                    Debug.Log("2 Objs in the same line! Do Not Spawn");
+                                    enemyCanSpawn = false;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        enemyCanSpawn = true;
+                        continue;
+                    }
+                }
+            */
+
+            #endregion
+            #region Old Enemy Spawn ver1
+            /* Old Test (DELETE)
+            foreach(int value in enemySpawnRuleZ)
+            {
+                if(enemySpawnRuleZ[value] == enemySpawnRuleZ[i])
+                {
+                    Debug.Log(value);
+                }
+            }
+            */
+            #endregion
+
+            switch (xDrawn)
             {
                 case 1:
                     xFinal = x1;
@@ -139,9 +262,12 @@ public class EnemyGenerator : MonoBehaviour
                     break;
             }
 
-            Instantiate<GameObject>(Resources.Load("Prefabs/SpaceInvader") as GameObject,
-                new Vector3(xFinal, yFinal, zFinal + zAdjustment),
-                new Quaternion(0f, 0f, 0f, 0f));
+            if (enemyCanSpawn == true)
+            {
+                Instantiate<GameObject>(Resources.Load("Prefabs/SpaceInvader") as GameObject,
+                    new Vector3(xFinal, yFinal, zFinal + zAdjustment),
+                    new Quaternion(0f, 0f, 0f, 0f));
+            }
         }
     }
 }
