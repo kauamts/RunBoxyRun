@@ -64,6 +64,12 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public static void AddScore(int value) // Coins
+    {
+        //scorePoints = scorePoints + value;
+        scorePoints += value;
+    }
+
     public void ResetScore()
     {
         if (scorePoints > highestScore)

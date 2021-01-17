@@ -133,7 +133,7 @@ public class EnemyGenerator : MonoBehaviour
                             }
                             else
                             {
-                                Debug.Log("2 Objs in the same line! Do Not Spawn");
+                                Debug.Log("Already 2 Objs in the same line! Do Not Spawn");
                                 enemyCanSpawn = false;
                                 break;
                             }
@@ -269,5 +269,82 @@ public class EnemyGenerator : MonoBehaviour
                     new Quaternion(0f, 0f, 0f, 0f));
             }
         }
+
+
+        #region Spawn 1 Coin.
+        xDrawn = Random.Range(1, 4);
+        zDrawn = Random.Range(1, 9);
+
+        for (int valueZ = 0; vaders > valueZ; valueZ++)
+        {
+            if (enemySpawnRuleZ[valueZ] == zDrawn)
+            {
+                Debug.Log(valueZ); // TEST
+                enemyLineCounter = 0; //Resets counter.
+                for (int valueX = 0; vaders > valueX; valueX++)
+                {
+                    // if there is a obj in the same location. Do not Spawn
+                    if (enemySpawnRuleX[valueX] == xDrawn)
+                    {
+                        Debug.Log("Same Location");
+                        enemyCanSpawn = false;
+                        break;
+                    }
+                    else
+                    {
+                        enemyCanSpawn = true;
+                    }
+                }
+            }
+            else
+            {
+                enemyCanSpawn = true;
+                continue;
+            }
+        }
+
+        switch (xDrawn)
+        {
+            case 1:
+                xFinal = x1;
+                break;
+            case 2:
+                xFinal = x2;
+                break;
+            case 3:
+                xFinal = x3;
+                break;
+        }
+
+        switch (zDrawn)
+        {
+            case 1:
+                zFinal = z1;
+                break;
+            case 2:
+                zFinal = z2;
+                break;
+            case 3:
+                zFinal = z3;
+                break;
+            case 4:
+                zFinal = z4;
+                break;
+            case 5:
+                zFinal = z5;
+                break;
+            case 6:
+                zFinal = z6;
+                break;
+            case 7:
+                zFinal = z7;
+                break;
+            case 8:
+                zFinal = z8;
+                break;
+        }
+
+        GetComponent<CoinGenerator>().SpawnCoin(enemyCanSpawn, xFinal,yFinal,zFinal,zAdjustment);
+        #endregion
     }
 }
