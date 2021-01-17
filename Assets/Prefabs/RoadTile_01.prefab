@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3695143782528316783}
   - component: {fileID: -5776964673587465127}
   - component: {fileID: 70230891583261173}
+  - component: {fileID: 5153129641069227213}
   m_Layer: 0
   m_Name: RoadTile_01
   m_TagString: Untagged
@@ -75,7 +76,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade8044725868b443b14316b5e2ad54d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceInvader: {fileID: 7835778001180288635, guid: 24bb20fb89fbca442bb7d00fe84b8192, type: 3}
   xFinal: 0
   yFinal: 0
   zFinal: 0
@@ -84,6 +84,21 @@ MonoBehaviour:
   spawnCount: 0
   lvlDifficulty: 0
   zAdjustment: 0
+  enemyCanSpawn: 0
+  enemySpawnRuleX: 
+  enemySpawnRuleZ: 
+--- !u!114 &5153129641069227213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3695143782528316782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15fdadd31e51c4c49bff09b7f1d53c3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &696690417946460421
 PrefabInstance:
   m_ObjectHideFlags: 0
