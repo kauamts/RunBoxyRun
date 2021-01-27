@@ -88,28 +88,38 @@ public class PlayerController : MonoBehaviour
                     case Direction.Right:
                         if (this.transform.position.x < (curPosition + 2.5f))
                         {
-                            this.transform.Translate(sideMoveSpeed * Time.deltaTime, 0f, 0f);
+                            ///this.transform.Translate(sideMoveSpeed * Time.deltaTime, 0f, 0f);
+                            
+                            this.transform.position = new Vector3((curPosition + 2.5f),
+                            this.transform.position.y, this.transform.position.z);
+                            curPosition = this.transform.position.x;
+                            playerMoving = false;
                         }
-                        else
+                        /*else
                         {
                             this.transform.position = new Vector3((curPosition + 2.5f),
                                 this.transform.position.y, this.transform.position.z);
                             curPosition = this.transform.position.x;
                             playerMoving = false;
-                        }
+                        }*/
                         break;
                     case Direction.Left:
                         if (this.transform.position.x > (curPosition - 2.5f))
                         {
-                            this.transform.Translate(sideMoveSpeed * Time.deltaTime * -1f, 0f, 0f);
-                        }
-                        else
-                        {
+                            //this.transform.Translate(sideMoveSpeed * Time.deltaTime * -1f, 0f, 0f);
+
                             this.transform.position = new Vector3((curPosition - 2.5f),
                                 this.transform.position.y, this.transform.position.z);
                             curPosition = this.transform.position.x;
                             playerMoving = false;
                         }
+                        /*else
+                        {
+                            this.transform.position = new Vector3((curPosition - 2.5f),
+                                this.transform.position.y, this.transform.position.z);
+                            curPosition = this.transform.position.x;
+                            playerMoving = false;
+                        }*/
                         break;
                 }
             }
