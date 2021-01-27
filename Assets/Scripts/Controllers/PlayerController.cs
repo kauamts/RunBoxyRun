@@ -88,10 +88,17 @@ public class PlayerController : MonoBehaviour
                     case Direction.Right:
                         if (this.transform.position.x < (curPosition + 2.5f))
                         {
+<<<<<<< HEAD
                             //this.transform.Translate(sideMoveSpeed * Time.deltaTime, 0f, 0f);
 
                             this.transform.position = new Vector3((curPosition + 2.5f),
                                 this.transform.position.y, this.transform.position.z);
+=======
+                            ///this.transform.Translate(sideMoveSpeed * Time.deltaTime, 0f, 0f);
+                            
+                            this.transform.position = new Vector3((curPosition + 2.5f),
+                            this.transform.position.y, this.transform.position.z);
+>>>>>>> develop
                             curPosition = this.transform.position.x;
                             playerMoving = false;
                         }
